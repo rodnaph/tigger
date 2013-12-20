@@ -8,7 +8,7 @@ as Clojure data structures.
 ## Usage
 
 To start a server you use the _listen_ function, which will return a channel
-that you can read from.  This is an example what prints all messages that
+that you can read from.  This is an example which prints all messages that
 are received.
 
 ```clojure
@@ -17,9 +17,8 @@ are received.
             [clojure.core.async :refer [<!!]]))
 
 (defn -main []
-  (let [ch (listen 1025)]
+  (let [ch (listen 25)]
     (while true
-      (let [message (<!! ch)]
-        (println "Message:" (pr-str message))))))
+      (println (pr-str (<!! ch))))))
 ```
  
