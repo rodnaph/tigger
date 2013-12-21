@@ -22,15 +22,3 @@ are received.
       (println (pr-str (<!! ch))))))
 ```
 
-## Message Data
-
-The data for each message is provided as an input stream via the _:input_
-key, so can be read like this...
-
-```clojure
-(let [{:keys [input]} (<!! ch)
-      data (slurp input)]
-  ; etc...
-  )
-```
-

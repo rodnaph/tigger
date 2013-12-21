@@ -25,10 +25,10 @@
   (set-in this :to recipient))
 
 (defn -data [this in]
-  (set-in this :input in))
+  (set-in this :body (slurp in)))
 
 (defn -done [this]
   (let [state @(.state this)
-        msg (select-keys state [:from :to :input])]
+        msg (select-keys state [:from :to :body])]
     (put! (:ch state) msg)))
 
