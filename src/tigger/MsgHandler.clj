@@ -22,15 +22,13 @@
   (set-in this :from from))
 
 (defn -recipient [this recipient]
-  (set-in this :recipient recipient))
+  (set-in this :to recipient))
 
 (defn -data [this in]
-  (set-in this :data (slurp in)))
+  (set-in this :input in))
 
 (defn -done [this]
-  (let [{:keys [ch from recipient data]} @(.state this)
-        msg {:from from
-             :recipient recipient
-             :data data}]
-    (put! ch msg)))
+  (let [state @(.state this)
+        msg (select-keys state [:from :to :input])]
+    (put! (:ch state) msg)))
 
